@@ -1,0 +1,19 @@
+{
+  "name": "needgen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ali-A-Koye/needgen.git"
+  },
+  "author": "Ali Amjed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ali-A-Koye/needgen/issues"
+  },
+  "homepage": "https://github.com/Ali-A-Koye/needgen#readme"
+}
