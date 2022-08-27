@@ -1,5 +1,5 @@
 type Data = {
-    [key: string | number]: string | number | boolean;
+    [key: string ]: string | number | boolean;
 }[]
   
   export default Data;
