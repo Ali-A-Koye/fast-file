@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -50,16 +73,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var docx_1 = require("docx");
 var lodash_1 = __importDefault(require("lodash"));
+var streamBuffers = __importStar(require("stream-buffers"));
 var docxGenerator = function (columns, dataArray, res, filename) {
     if (filename === void 0) { filename = "docx_".concat(new Date().getTime()); }
     return __awaiter(void 0, void 0, void 0, function () {
-        var headers, rows, table, doc, b64string;
+        var headers, rows, table, doc, fileBuffer, myReadableStreamBuffer;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log(columns);
-                    console.log(dataArray);
-                    console.log("==============================");
                     headers = columns.map(function (el) {
                         return new docx_1.TableCell({
                             children: [new docx_1.Paragraph(el.header)],
@@ -90,11 +111,17 @@ var docxGenerator = function (columns, dataArray, res, filename) {
                             },
                         ],
                     });
-                    return [4 /*yield*/, docx_1.Packer.toBase64String(doc)];
+                    return [4 /*yield*/, docx_1.Packer.toBuffer(doc)];
                 case 1:
-                    b64string = _a.sent();
-                    res.setHeader("Content-Disposition", "attachment; filename=".concat(filename, ".docx"));
-                    res.send(Buffer.from(b64string, "base64"));
+                    fileBuffer = _a.sent();
+                    myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
+                        frequency: 10,
+                        chunkSize: 2048,
+                    });
+                    myReadableStreamBuffer.put(fileBuffer);
+                    myReadableStreamBuffer.stop();
+                    res.attachment("".concat(filename, ".docx"));
+                    myReadableStreamBuffer.pipe(res);
                     return [2 /*return*/];
             }
         });

@@ -3,6 +3,7 @@ import _ from "lodash";
 import DataType from "../../../types/data";
 import { Response } from "express";
 import { ColsGenerated } from "../../../types/ColsGenerated";
+import * as streamBuffers from "stream-buffers";
 
 const docxGenerator = async (
   columns: ColsGenerated,
@@ -18,7 +19,7 @@ const docxGenerator = async (
   );
 
   const rows = _.map(dataArray, (el) => {
-    let arr: any[] = [];
+    let arr: TableCell[] = [];
     _.map(columns, (head) => {
       arr.push(
         new TableCell({
@@ -48,10 +49,17 @@ const docxGenerator = async (
     ],
   });
 
-  const b64string = await Packer.toBase64String(doc);
+  const fileBuffer = await Packer.toBuffer(doc);
 
-  res.setHeader("Content-Disposition", `attachment; filename=${filename}.docx`);
-  res.send(Buffer.from(b64string, "base64"));
+  const myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
+    frequency: 10,
+    chunkSize: 2048,
+  });
+
+  myReadableStreamBuffer.put(fileBuffer);
+  myReadableStreamBuffer.stop();
+  res.attachment(`${filename}.docx`);
+  myReadableStreamBuffer.pipe(res);
 };
 
 export default docxGenerator;
