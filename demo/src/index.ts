@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 
-import needGen from "../dist/lib";
+import needGen from "../../dist/lib";
 const app: Express = express();
 const port = 3000;
 
