@@ -1,6 +1,6 @@
 import _ from "lodash";
 import DataType from "../../../types/data";
-import { Response } from "express";
+import { Response, text } from "express";
 import { ColsGenerated } from "../../../types/ColsGenerated";
 import * as streamBuffers from "stream-buffers";
 
@@ -10,9 +10,18 @@ const txtGenerator = async (
   res: Response,
   filename = `txt_${new Date().getTime()}`
 ) => {
-  
+  let textToWrite: string = "";
 
-  const fileBuffer = Buffer.from("", "utf-8");
+  textToWrite += "Headers : ";
+  _.map(columns, (column) => {
+    textToWrite += column.header + ", ";
+  });
+  textToWrite += "\n";
+
+  _.map(dataArray, (data, i) => {
+    textToWrite += `Row : ${i + 1} : ` + Object.values(data).join(", ") + "\n";
+  });
+  const fileBuffer = Buffer.from(textToWrite, "utf-8");
 
   const myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
     frequency: 10,

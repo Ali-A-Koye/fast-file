@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -39,52 +62,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var columnGen_1 = __importDefault(require("./columnGen"));
-var pdf_1 = __importDefault(require("./generator/pdf"));
-var excel_1 = __importDefault(require("./generator/excel"));
-var docx_1 = __importDefault(require("./generator/docx"));
-var csv_1 = __importDefault(require("./generator/csv"));
-var txt_1 = __importDefault(require("./generator/txt"));
-var generator = function (data, type, res, asOp) {
-    if (asOp === void 0) { asOp = []; }
+var lodash_1 = __importDefault(require("lodash"));
+var streamBuffers = __importStar(require("stream-buffers"));
+var txtGenerator = function (columns, dataArray, res, filename) {
+    if (filename === void 0) { filename = "txt_".concat(new Date().getTime()); }
     return __awaiter(void 0, void 0, void 0, function () {
-        var columns, _a;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    columns = (0, columnGen_1.default)(Object.keys(data[0]), type, asOp);
-                    _a = type;
-                    switch (_a) {
-                        case "pdf": return [3 /*break*/, 1];
-                        case "excel": return [3 /*break*/, 3];
-                        case "docx": return [3 /*break*/, 5];
-                        case "csv": return [3 /*break*/, 7];
-                        case "txt": return [3 /*break*/, 9];
-                    }
-                    return [3 /*break*/, 11];
-                case 1: return [4 /*yield*/, (0, pdf_1.default)(columns, data, res)];
-                case 2:
-                    _b.sent();
-                    return [2 /*return*/];
-                case 3: return [4 /*yield*/, (0, excel_1.default)(columns, data, res)];
-                case 4:
-                    _b.sent();
-                    return [2 /*return*/];
-                case 5: return [4 /*yield*/, (0, docx_1.default)(columns, data, res)];
-                case 6:
-                    _b.sent();
-                    return [2 /*return*/];
-                case 7: return [4 /*yield*/, (0, csv_1.default)(columns, data, res)];
-                case 8:
-                    _b.sent();
-                    return [2 /*return*/];
-                case 9: return [4 /*yield*/, (0, txt_1.default)(columns, data, res)];
-                case 10:
-                    _b.sent();
-                    return [2 /*return*/];
-                case 11: return [2 /*return*/];
-            }
+        var textToWrite, fileBuffer, myReadableStreamBuffer;
+        return __generator(this, function (_a) {
+            textToWrite = "";
+            textToWrite += "Headers : ";
+            lodash_1.default.map(columns, function (column) {
+                textToWrite += column.header + ", ";
+            });
+            textToWrite += "\n";
+            lodash_1.default.map(dataArray, function (data, i) {
+                textToWrite += "Row : ".concat(i + 1, " : ") + Object.values(data).join(", ") + "\n";
+            });
+            fileBuffer = Buffer.from(textToWrite, "utf-8");
+            myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
+                frequency: 10,
+                chunkSize: 2048,
+            });
+            myReadableStreamBuffer.put(fileBuffer);
+            myReadableStreamBuffer.stop();
+            res.attachment("".concat(filename, ".txt"));
+            myReadableStreamBuffer.pipe(res);
+            return [2 /*return*/];
         });
     });
 };
-exports.default = generator;
+exports.default = txtGenerator;
