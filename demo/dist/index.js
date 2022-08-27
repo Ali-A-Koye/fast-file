@@ -45,6 +45,13 @@ app.get("/txt", (req, res) => {
     ];
     (0, lib_1.default)(data, "txt", res);
 });
+app.get("/imSql", (req, res) => {
+    let data = [
+        { name: "john", age: 12 },
+        { name: "john", age: 12 },
+    ];
+    (0, lib_1.default)(data, "imSql", res);
+});
 const server = app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

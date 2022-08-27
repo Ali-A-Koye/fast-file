@@ -50,6 +50,13 @@ app.get("/txt", (req: Request, res: Response) => {
   fastgen(data, "txt", res);
 });
 
+app.get("/imSql", (req: Request, res: Response) => {
+  let data = [
+    { name: "john", age: 12 },
+    { name: "john", age: 12 },
+  ];
+  fastgen(data, "imSql", res);
+});
 const server = app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

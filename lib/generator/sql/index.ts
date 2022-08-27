@@ -12,14 +12,14 @@ const sqlGenerator = async (
 ) => {
   let textToWrite: string = "";
 
-  textToWrite += "INSERT INTO $table_name ( \n";
-  _.map(columns, (column) => {
-    textToWrite += column.header + ", \n";
+  textToWrite += "INSERT INTO table_name ( \n";
+  _.map(columns, (column,i) => {
+    textToWrite += column.header + (i+1 != columns.length ? ", \n" : "");
   });
   textToWrite += ") VALUES \n";
 
   _.map(dataArray, (data, i) => {
-    textToWrite += "(" + Object.values(data).join(", ") + "), \n";
+    textToWrite += "(" + Object.values(data).join(", ") + ")" + (i+1 != dataArray.length ? ", \n" : "");
   });
 
   textToWrite += ";";
