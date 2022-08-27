@@ -1,4 +1,5 @@
 import columnGen from "./columnGen";
+import pdfGenerator from "./generator/pdf"
 // const pdf = require("./dependencies/pdf/downloader");
 // const excel = require("./dependencies/excel/downloader");
 import Type from "../types/Type";
@@ -6,7 +7,7 @@ import { Response } from "express";
 import AsOpType from "../types/AsOp";
 import DataType from "../types/data";
 
-const generator = (
+const generator = async (
   data: DataType,
   type: Type,
   res: Response,
@@ -14,10 +15,9 @@ const generator = (
 ) => {
   const columns = columnGen(Object.keys(data[0]), type, asOp);
 
-  console.log(columns, data, res, asOp);
-  
   switch (type) {
     case "pdf":
+      await pdfGenerator(columns, data, res)
       return;
     case "excel":
       return;

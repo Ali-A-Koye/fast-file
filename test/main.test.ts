@@ -6,7 +6,7 @@ test("Test function parameters", () => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  let res = {} as Response; //Mock response object
+  let res = {} as Response; //Mock express response object
   generator(data, "pdf", res, [
     { field: "name", as: "Name" },
     { field: "age", as: "Age" },
