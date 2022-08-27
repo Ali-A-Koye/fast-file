@@ -35,49 +35,66 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var docx_1 = require("docx");
+var lodash_1 = __importDefault(require("lodash"));
 var docxGenerator = function (columns, dataArray, res, filename) {
     if (filename === void 0) { filename = "docx_".concat(new Date().getTime()); }
     return __awaiter(void 0, void 0, void 0, function () {
-        var table, doc, b64string;
+        var headers, rows, table, doc, b64string;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    console.log(columns);
+                    console.log(dataArray);
+                    console.log("==============================");
+                    headers = columns.map(function (el) {
+                        return new docx_1.TableCell({
+                            children: [new docx_1.Paragraph(el.header)],
+                        });
+                    });
+                    rows = lodash_1.default.map(dataArray, function (el) {
+                        var arr = [];
+                        lodash_1.default.map(columns, function (head) {
+                            arr.push(new docx_1.TableCell({
+                                children: [new docx_1.Paragraph(el[head.key].toString())],
+                            }));
+                        });
+                        return new docx_1.TableRow({
+                            children: arr,
+                        });
+                    });
                     table = new docx_1.Table({
-                        rows: [
+                        rows: __spreadArray([
                             new docx_1.TableRow({
-                                children: [
-                                    new docx_1.TableCell({
-                                        children: [new docx_1.Paragraph("name")],
-                                    }),
-                                    new docx_1.TableCell({
-                                        children: [new docx_1.Paragraph("age")],
-                                    }),
-                                ],
-                            }),
-                            new docx_1.TableRow({
-                                children: [
-                                    new docx_1.TableCell({
-                                        children: [new docx_1.Paragraph("ali")],
-                                    }),
-                                    new docx_1.TableCell({
-                                        children: [new docx_1.Paragraph("12")],
-                                    }),
-                                ],
-                            }),
-                        ],
+                                children: headers,
+                            })
+                        ], rows, true),
                     });
                     doc = new docx_1.Document({
-                        sections: [{
+                        sections: [
+                            {
                                 children: [table],
-                            }],
+                            },
+                        ],
                     });
                     return [4 /*yield*/, docx_1.Packer.toBase64String(doc)];
                 case 1:
                     b64string = _a.sent();
-                    res.setHeader('Content-Disposition', "attachment; filename=".concat(filename, ".docx"));
-                    res.send(Buffer.from(b64string, 'base64'));
+                    res.setHeader("Content-Disposition", "attachment; filename=".concat(filename, ".docx"));
+                    res.send(Buffer.from(b64string, "base64"));
                     return [2 /*return*/];
             }
         });
