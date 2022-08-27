@@ -43,4 +43,10 @@ describe("Get Test Endpoint", () => {
       .expect(200)
       .responseType("blob");
   });
+  it("imSQL file test with 3 parameters", async () => {
+    const res = await request(server)
+      .get("/imSql")
+      .expect(200)
+      .responseType("blob");
+  });
 });
