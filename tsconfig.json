@@ -7,5 +7,5 @@
       "strict": true,
       "esModuleInterop":true
     },
-    "exclude":["demo/**/*"]
+    "exclude":["demo/**/*","dist/**/*"]
   }
