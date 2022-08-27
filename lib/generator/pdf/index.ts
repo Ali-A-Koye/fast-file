@@ -6,7 +6,7 @@ import defaultStyle from "./style";
 
 import DataType from "../../../types/data";
 import { Response } from "express";
-import ColsGenerated from "../../../types/ColsGenerated";
+import {ColsGenerated} from "../../../types/ColsGenerated";
 import { Headers, Widths, Data } from "../../../types/generator/pdf";
 import { TDocumentDefinitions } from "pdfmake/interfaces";
 

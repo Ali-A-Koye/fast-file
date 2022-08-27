@@ -1,7 +1,7 @@
 import Type from "../types/Type";
 import AsOpType from "../types/AsOp";
 import ColumnGenKeys from "../types/ColumnGenKey";
-import ColsGenerated from "../types/ColsGenerated";
+import {ColsGenerated} from "../types/ColsGenerated";
 const colGenerator = (keys: ColumnGenKeys, type: Type, asOp: AsOpType) => {
   let cols:ColsGenerated = [];
 

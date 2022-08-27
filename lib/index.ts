@@ -1,11 +1,12 @@
 import columnGen from "./columnGen";
-import pdfGenerator from "./generator/pdf"
-// const pdf = require("./dependencies/pdf/downloader");
-// const excel = require("./dependencies/excel/downloader");
 import Type from "../types/Type";
 import { Response } from "express";
 import AsOpType from "../types/AsOp";
 import DataType from "../types/data";
+
+import pdfGenerator from "./generator/pdf"
+import excelGenerator from "./generator/excel"
+import {excelCols} from "../types/ColsGenerated";
 
 const generator = async (
   data: DataType,
@@ -20,16 +21,10 @@ const generator = async (
       await pdfGenerator(columns, data, res)
       return;
     case "excel":
+      await excelGenerator(columns as excelCols, data, res)
       return;
     default:
       return;
-  }
-
-
-  if (type == "pdf") {
-    // await pdf(columns, init.data, res);
-  } else {
-    // await excel(columns, init.data, res);
   }
 };
 

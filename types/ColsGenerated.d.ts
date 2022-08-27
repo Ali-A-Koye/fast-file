@@ -1,8 +1,13 @@
 type ColsGenerated = {
-    header: string;
-    key: string;
-    width: "*" | 40 | "auto";
-    style?: string;
-  }[];
+  header: string;
+  key: string;
+  width: "*" | 40 | "auto";
+  style?: string;
+}[];
 
-  export default ColsGenerated;
+type excelCols = {
+  header: string;
+  key: string;
+  width: number;
+}[];
+export { ColsGenerated, excelCols };

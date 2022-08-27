@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@types/express": "^4.17.13",
+    "exceljs": "^4.3.0",
     "lodash": "^4.17.21",
     "pdfmake": "^0.2.5",
     "stream-buffers": "^3.0.2"
