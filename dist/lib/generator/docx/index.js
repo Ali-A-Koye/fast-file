@@ -84,6 +84,7 @@ var docxGenerator = function (columns, dataArray, res, filename) {
                     headers = columns.map(function (el) {
                         return new docx_1.TableCell({
                             children: [new docx_1.Paragraph(el.header)],
+                            verticalAlign: docx_1.VerticalAlign.CENTER,
                         });
                     });
                     rows = lodash_1.default.map(dataArray, function (el) {

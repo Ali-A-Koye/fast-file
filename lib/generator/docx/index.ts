@@ -1,4 +1,4 @@
-import { Document, Packer, Paragraph, Table, TableCell, TableRow } from "docx";
+import { Document, Packer, Paragraph, Table, TableCell, TableRow, VerticalAlign, WidthType } from "docx";
 import _ from "lodash";
 import DataType from "../../../types/data";
 import { Response } from "express";
@@ -15,6 +15,7 @@ const docxGenerator = async (
     (el) =>
       new TableCell({
         children: [new Paragraph(el.header)],
+        verticalAlign: VerticalAlign.CENTER,
       })
   );
 

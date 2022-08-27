@@ -32,6 +32,8 @@ app.get("/excel", (req: Request, res: Response) => {
   fastgen(data, "excel", res);
 });
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
+
+export default server;
