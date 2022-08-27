@@ -7,7 +7,7 @@ import DataType from "../types/data";
 import pdfGenerator from "./generator/pdf"
 import excelGenerator from "./generator/excel"  
 import docxGenerator from "./generator/docx"
-
+import csvGenerator from "./generator/csv"
 import {excelCols} from "../types/ColsGenerated";
 
 const generator = async (
@@ -27,6 +27,9 @@ const generator = async (
       return;
     case "docx": 
       await docxGenerator(columns, data, res)
+      return;
+    case "csv": 
+      await csvGenerator(columns, data, res)
       return;
     default:
       return;
