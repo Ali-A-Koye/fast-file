@@ -8,9 +8,21 @@ const sqlGenerator = async (
   columns: ColsGenerated,
   dataArray: DataType,
   res: Response,
-  filename = `txt_${new Date().getTime()}`
+  filename = `sql_${new Date().getTime()}`
 ) => {
   let textToWrite: string = "";
+
+  textToWrite += "INSERT INTO $table_name ( \n";
+  _.map(columns, (column) => {
+    textToWrite += column.header + ", \n";
+  });
+  textToWrite += ") VALUES \n";
+
+  _.map(dataArray, (data, i) => {
+    textToWrite += "(" + Object.values(data).join(", ") + "), \n";
+  });
+
+  textToWrite += ";";
 
   const fileBuffer = Buffer.from(textToWrite, "utf-8");
 
@@ -21,7 +33,7 @@ const sqlGenerator = async (
 
   myReadableStreamBuffer.put(fileBuffer);
   myReadableStreamBuffer.stop();
-  res.attachment(`${filename}.txt`);
+  res.attachment(`${filename}.sql`);
   myReadableStreamBuffer.pipe(res);
 };
 
