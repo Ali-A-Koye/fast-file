@@ -32,6 +32,15 @@ app.get("/excel", (req: Request, res: Response) => {
   fastgen(data, "excel", res);
 });
 
+
+app.get("/csv", (req: Request, res: Response) => {
+  let data = [
+    { name: "john", age: 12 },
+    { name: "john", age: 12 },
+  ];
+  fastgen(data, "csv", res);
+});
+
 const server = app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
