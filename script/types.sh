@@ -1,1 +1,1 @@
-cp -r types dist/types
+cp -r types dist/
