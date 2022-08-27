@@ -1,3 +1,3 @@
-type UserInputType = "pdf" | "excel"
+type UserInputType = "pdf" | "excel" | "docx";
   
   export default UserInputType;

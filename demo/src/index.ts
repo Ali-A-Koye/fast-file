@@ -16,6 +16,14 @@ app.get("/pdf", (req: Request, res: Response) => {
   fastgen(data, "pdf", res);
 });
 
+app.get("/docx", (req: Request, res: Response) => {
+  let data = [
+    { name: "john", age: 12 },
+    { name: "john", age: 12 },
+  ];
+  fastgen(data, "docx", res);
+});
+
 app.get("/excel", (req: Request, res: Response) => {
   let data = [
     { name: "john", age: 12 },

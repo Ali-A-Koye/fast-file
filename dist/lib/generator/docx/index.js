@@ -35,44 +35,52 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var columnGen_1 = __importDefault(require("./columnGen"));
-var pdf_1 = __importDefault(require("./generator/pdf"));
-var excel_1 = __importDefault(require("./generator/excel"));
-var docx_1 = __importDefault(require("./generator/docx"));
-var generator = function (data, type, res, asOp) {
-    if (asOp === void 0) { asOp = []; }
+var docx_1 = require("docx");
+var docxGenerator = function (columns, dataArray, res, filename) {
+    if (filename === void 0) { filename = "docx_".concat(new Date().getTime()); }
     return __awaiter(void 0, void 0, void 0, function () {
-        var columns, _a;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
+        var table, doc, b64string;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
                 case 0:
-                    columns = (0, columnGen_1.default)(Object.keys(data[0]), type, asOp);
-                    _a = type;
-                    switch (_a) {
-                        case "pdf": return [3 /*break*/, 1];
-                        case "excel": return [3 /*break*/, 3];
-                        case "docx": return [3 /*break*/, 5];
-                    }
-                    return [3 /*break*/, 7];
-                case 1: return [4 /*yield*/, (0, pdf_1.default)(columns, data, res)];
-                case 2:
-                    _b.sent();
+                    table = new docx_1.Table({
+                        rows: [
+                            new docx_1.TableRow({
+                                children: [
+                                    new docx_1.TableCell({
+                                        children: [new docx_1.Paragraph("name")],
+                                    }),
+                                    new docx_1.TableCell({
+                                        children: [new docx_1.Paragraph("age")],
+                                    }),
+                                ],
+                            }),
+                            new docx_1.TableRow({
+                                children: [
+                                    new docx_1.TableCell({
+                                        children: [new docx_1.Paragraph("ali")],
+                                    }),
+                                    new docx_1.TableCell({
+                                        children: [new docx_1.Paragraph("12")],
+                                    }),
+                                ],
+                            }),
+                        ],
+                    });
+                    doc = new docx_1.Document({
+                        sections: [{
+                                children: [table],
+                            }],
+                    });
+                    return [4 /*yield*/, docx_1.Packer.toBase64String(doc)];
+                case 1:
+                    b64string = _a.sent();
+                    res.setHeader('Content-Disposition', "attachment; filename=".concat(filename, ".docx"));
+                    res.send(Buffer.from(b64string, 'base64'));
                     return [2 /*return*/];
-                case 3: return [4 /*yield*/, (0, excel_1.default)(columns, data, res)];
-                case 4:
-                    _b.sent();
-                    return [2 /*return*/];
-                case 5: return [4 /*yield*/, (0, docx_1.default)(columns, data, res)];
-                case 6:
-                    _b.sent();
-                    return [2 /*return*/];
-                case 7: return [2 /*return*/];
             }
         });
     });
 };
-exports.default = generator;
+exports.default = docxGenerator;

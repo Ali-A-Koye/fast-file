@@ -17,6 +17,13 @@ app.get("/pdf", (req, res) => {
     ];
     (0, lib_1.default)(data, "pdf", res);
 });
+app.get("/docx", (req, res) => {
+    let data = [
+        { name: "john", age: 12 },
+        { name: "john", age: 12 },
+    ];
+    (0, lib_1.default)(data, "docx", res);
+});
 app.get("/excel", (req, res) => {
     let data = [
         { name: "john", age: 12 },
