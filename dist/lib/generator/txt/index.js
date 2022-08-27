@@ -76,7 +76,7 @@ var txtGenerator = function (columns, dataArray, res, filename) {
             });
             textToWrite += "\n";
             lodash_1.default.map(dataArray, function (data, i) {
-                textToWrite += "Row : ".concat(i + 1, " : ") + Object.values(data).join(", ") + "\n";
+                textToWrite += "Row ".concat(i + 1, " : ") + Object.values(data).join(", ") + "\n";
             });
             fileBuffer = Buffer.from(textToWrite, "utf-8");
             myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({

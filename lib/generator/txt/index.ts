@@ -19,7 +19,7 @@ const txtGenerator = async (
   textToWrite += "\n";
 
   _.map(dataArray, (data, i) => {
-    textToWrite += `Row : ${i + 1} : ` + Object.values(data).join(", ") + "\n";
+    textToWrite += `Row ${i + 1} : ` + Object.values(data).join(", ") + "\n";
   });
   const fileBuffer = Buffer.from(textToWrite, "utf-8");
 
