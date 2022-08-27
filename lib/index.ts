@@ -8,6 +8,7 @@ import pdfGenerator from "./generator/pdf"
 import excelGenerator from "./generator/excel"  
 import docxGenerator from "./generator/docx"
 import csvGenerator from "./generator/csv"
+import txtGenerator from "./generator/txt"
 import {excelCols} from "../types/ColsGenerated";
 
 const generator = async (
@@ -30,6 +31,9 @@ const generator = async (
       return;
     case "csv": 
       await csvGenerator(columns, data, res)
+      return;
+    case "txt":
+      await txtGenerator(columns, data, res)
       return;
     default:
       return;
