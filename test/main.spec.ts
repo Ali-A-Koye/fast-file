@@ -29,4 +29,11 @@ describe("Get Test Endpoint", () => {
       .expect(200)
       .responseType("blob");
   });
+
+  it("csv file test with 3 parameters", async () => {
+    const res = await request(server)
+      .get("/csv")
+      .expect(200)
+      .responseType("blob");
+  });
 });
