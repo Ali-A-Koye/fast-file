@@ -1,1 +1,1 @@
-# needgen
+# fastgen

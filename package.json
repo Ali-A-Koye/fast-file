@@ -1,5 +1,5 @@
 {
-  "name": "needgen",
+  "name": "fastgen",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -11,14 +11,14 @@
   "repository": {
     "prepublish": "npm run build",
     "type": "git",
-    "url": "git+https://github.com/Ali-A-Koye/needgen.git"
+    "url": "git+https://github.com/Ali-A-Koye/fastgen.git"
   },
   "author": "Ali Amjed",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Ali-A-Koye/needgen/issues"
+    "url": "https://github.com/Ali-A-Koye/fastgen/issues"
   },
-  "homepage": "https://github.com/Ali-A-Koye/needgen#readme",
+  "homepage": "https://github.com/Ali-A-Koye/fastgen#readme",
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",

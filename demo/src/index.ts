@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 
-import needGen from "../../dist/lib";
+import fastgen from "../../dist/lib";
 const app: Express = express();
 const port = 3000;
 
@@ -13,7 +13,7 @@ app.get("/pdf", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  needGen(data, "pdf", res);
+  fastgen(data, "pdf", res);
 });
 
 app.get("/excel", (req: Request, res: Response) => {
@@ -21,7 +21,7 @@ app.get("/excel", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  needGen(data, "excel", res);
+  fastgen(data, "excel", res);
 });
 
 app.listen(port, () => {
