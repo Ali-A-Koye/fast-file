@@ -49,4 +49,11 @@ describe("Get Test Endpoint", () => {
       .expect(200)
       .responseType("blob");
   });
+
+  it("json file test with 3 parameters", async () => {
+    const res = await request(server)
+      .get("/json")
+      .expect(200)
+      .responseType("blob");
+  });
 });
