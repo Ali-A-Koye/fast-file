@@ -1,7 +1,7 @@
 {
   "name": "fast-file",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fast File is a Quick and easy to use library to generate a file from source data to a variety of options.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
