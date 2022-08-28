@@ -6,10 +6,9 @@
 
 [![Ali-A-Koye - fast-file ](https://img.shields.io/static/v1?label=Ali-A-Koye&message=fast-file&color=yellow&logo=github)](https://github.com/Ali-A-Koye/fast-file) [![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/Ali-A-Koye/fast-file/blob/master/LICENSE)
 
-Fast File Converter Library is a quick and easy-to-use library to convert data sources to a variety of options. Fast File tries to make the developer's life easier by simplifying many conversion options (PDF, JSON, CSV, imSQL, text, excel, and Docx) with a single data source.
+Fast File Converter Library is a quick and easy-to-use library to convert data sources to a variety of options. Fast File tries to make the developer's life easier by simplifying many conversion options (PDF, JSON, CSV, imSQL, text, excel, and Docx) with a single data source format.
 
-##   
-Making the developer's life easier
+## Making the developer's life easier
 
 Our idea for this package is to provide the basic needs of a developer when dealing with files simply.  
 When you only have a result of a query ( Array of Objects ) and you want to convert it to a form that a non-programmer can read and understand more easily, that's how our package helps you to convert your data into a variety of data representation forms just by calling one function.  
