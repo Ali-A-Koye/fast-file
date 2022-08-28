@@ -1,6 +1,6 @@
 {
   "name": "fast-file-converter",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Fast File is a quick and easy-to-use library to convert data sources to a variety of options.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,19 @@
     "build": "tsc & sh script/font.sh & sh script/types.sh",
     "test": "jest"
   },
+  "keywords": [
+    "pdf",
+    "json",
+    "docx",
+    "csv",
+    "sql",
+    "excel",
+    "txt",
+    "converter",
+    "transformer",
+    "generator"
+  ],
+
   "repository": {
     "prepublish": "npm run build",
     "type": "git",
@@ -17,9 +30,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ali-A-Koye/fast-file/issues"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/Ali-A-Koye"
   },
   "homepage": "https://github.com/Ali-A-Koye/fast-file#readme",
   "devDependencies": {
