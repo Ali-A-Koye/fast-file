@@ -30,7 +30,7 @@ When you only have a result of a query ( Array of Objects ) and you want to conv
 *   [_**Usage**_](#usage)
     *   [_**PDF**_](#PDF)
     *   [_**Docx**_](#DocX)
-    *   [_**Excel / XLSX**_](#Excel)
+    *   [_**Excel / XLSX**_](#excel--xlsx)
     *   [_**CSV**_](#CSV)
     *   [_**Text**_](#Text) 
     *   [_**imSql ( insert Many SQL )**_](#imSql )
