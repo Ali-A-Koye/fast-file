@@ -51,8 +51,7 @@ npm run build  // To build the TS into JS code
 npm run start // To start the express.js server
 ```
 
-##   
-Requirements
+## Requirements
 
 In order to work with this package, you are required to :
 
