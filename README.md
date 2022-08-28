@@ -99,8 +99,7 @@ app.get("/pdf", (req, res) => {
 });
 ```
 
-###   
-DocX
+### DocX
 
 You can convert your array of an object into a pre-configured table and have it downloaded right away, the benefit of this is that you can style it the way you want after downloading the docx.
 
@@ -114,8 +113,7 @@ app.get("/docx", (req, res) => {
 });
 ```
 
-###   
-Excel / XLSX
+### Excel / XLSX
 
 You can convert your array of an object into a nice, pre-styled Excel file and have it downloaded right away, as simple as this :   
  
@@ -130,8 +128,7 @@ app.get("/excel", (req, res) => {
 });
 ```
 
-###   
-CSV
+### CSV
 
 You can convert your array of an object into a CSV file and have it downloaded right away, as simple as this :   
  
@@ -177,8 +174,7 @@ app.get("/imSql", (req, res) => {
 });
 ```
 
-###   
-**JSON**
+### JSON
 
 You can convert your array of an object into an JSON format and have it downloaded right away, as simple as this : 
 
@@ -193,8 +189,7 @@ app.get("/json", (req: Request, res: Response) => {
 });
 ```
 
-##   
-AsOp (As Operation) Configuration :
+## AsOp (As Operation) Configuration :
 
 AsOp is an array of objects, for which columns you want to have which field in your data, and which header for it. that means you can easily control the flow of your data by specifying a friendly name as a header and specifying the corresponding field with it.  
  
