@@ -180,7 +180,7 @@ You can convert your array of an object into an JSON format and have it download
 
 ```javascript
 
-app.get("/json", (req: Request, res: Response) => {
+app.get("/json", (req, res) => {
   let data = [
       { name: "Ali", age: 23},
       { name: "Alison", age: 20 }, 
