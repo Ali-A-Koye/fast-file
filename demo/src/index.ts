@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 
-import fastgen from "../../dist/lib";
+import fastFile from "../../dist/lib";
 const app: Express = express();
 const port = 3000;
 
@@ -13,7 +13,7 @@ app.get("/pdf", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  fastgen(data, "pdf", res);
+  fastFile(data, "pdf", res);
 });
 
 app.get("/docx", (req: Request, res: Response) => {
@@ -21,7 +21,7 @@ app.get("/docx", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  fastgen(data, "docx", res);
+  fastFile(data, "docx", res);
 });
 
 app.get("/excel", (req: Request, res: Response) => {
@@ -29,7 +29,7 @@ app.get("/excel", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  fastgen(data, "excel", res);
+  fastFile(data, "excel", res);
 });
 
 
@@ -38,7 +38,7 @@ app.get("/csv", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  fastgen(data, "csv", res);
+  fastFile(data, "csv", res);
 });
 
 
@@ -47,7 +47,7 @@ app.get("/txt", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  fastgen(data, "txt", res);
+  fastFile(data, "txt", res);
 });
 
 app.get("/imSql", (req: Request, res: Response) => {
@@ -55,7 +55,7 @@ app.get("/imSql", (req: Request, res: Response) => {
     { name: "john", age: 12 },
     { name: "john", age: 12 },
   ];
-  fastgen(data, "imSql", res);
+  fastFile(data, "imSql", res);
 });
 const server = app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
