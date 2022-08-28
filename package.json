@@ -1,6 +1,6 @@
 {
   "name": "fast-file-converter",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Fast File is a quick and easy-to-use library to convert data sources to a variety of options.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,6 +17,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ali-A-Koye/fast-file/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Ali-A-Koye"
   },
   "homepage": "https://github.com/Ali-A-Koye/fast-file#readme",
   "devDependencies": {
