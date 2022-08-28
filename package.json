@@ -1,9 +1,9 @@
 {
   "name": "fast-file-converter",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Fast File is a quick and easy-to-use library to convert data sources to a variety of options.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "scripts": {
     "build": "tsc & sh script/font.sh & sh script/types.sh",
     "test": "jest"
