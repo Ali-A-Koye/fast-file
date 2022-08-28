@@ -10,6 +10,7 @@ import docxGenerator from "./generator/docx"
 import csvGenerator from "./generator/csv"
 import txtGenerator from "./generator/txt"
 import sqlGenerator from "./generator/sql"
+import jsonGenerator from "./generator/json"
 import {excelCols} from "../types/ColsGenerated";
 
 const generator = async (
@@ -38,6 +39,9 @@ const generator = async (
       return;
     case "imSql":
       await sqlGenerator(columns, data, res)
+      return;
+    case "json":
+      await jsonGenerator(columns, data, res)
       return;
     default:
       return;
