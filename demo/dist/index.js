@@ -52,6 +52,13 @@ app.get("/imSql", (req, res) => {
     ];
     (0, lib_1.default)(data, "imSql", res);
 });
+app.get("/json", (req, res) => {
+    let data = [
+        { name: "john", age: 12 },
+        { name: "john", age: 12 },
+    ];
+    (0, lib_1.default)(data, "json", res);
+});
 const server = app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });

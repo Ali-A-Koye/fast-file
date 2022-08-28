@@ -46,6 +46,7 @@ var docx_1 = __importDefault(require("./generator/docx"));
 var csv_1 = __importDefault(require("./generator/csv"));
 var txt_1 = __importDefault(require("./generator/txt"));
 var sql_1 = __importDefault(require("./generator/sql"));
+var json_1 = __importDefault(require("./generator/json"));
 var generator = function (data, type, res, asOp) {
     if (asOp === void 0) { asOp = []; }
     return __awaiter(void 0, void 0, void 0, function () {
@@ -62,8 +63,9 @@ var generator = function (data, type, res, asOp) {
                         case "csv": return [3 /*break*/, 7];
                         case "txt": return [3 /*break*/, 9];
                         case "imSql": return [3 /*break*/, 11];
+                        case "json": return [3 /*break*/, 13];
                     }
-                    return [3 /*break*/, 13];
+                    return [3 /*break*/, 15];
                 case 1: return [4 /*yield*/, (0, pdf_1.default)(columns, data, res)];
                 case 2:
                     _b.sent();
@@ -88,7 +90,11 @@ var generator = function (data, type, res, asOp) {
                 case 12:
                     _b.sent();
                     return [2 /*return*/];
-                case 13: return [2 /*return*/];
+                case 13: return [4 /*yield*/, (0, json_1.default)(columns, data, res)];
+                case 14:
+                    _b.sent();
+                    return [2 /*return*/];
+                case 15: return [2 /*return*/];
             }
         });
     });

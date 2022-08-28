@@ -57,6 +57,15 @@ app.get("/imSql", (req: Request, res: Response) => {
   ];
   fastFile(data, "imSql", res);
 });
+
+
+app.get("/json", (req: Request, res: Response) => {
+  let data = [
+    { name: "john", age: 12 },
+    { name: "john", age: 12 },
+  ];
+  fastFile(data, "json", res);
+});
 const server = app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
