@@ -222,7 +222,7 @@ Below is a table of acceptable parameters for this library.
 | Parameter | Description | Default | Validations |
 | --- | --- | --- | --- |
 | data | Array of Objects |   | Required |
-| Type | must be valid Enum (**"pdf"** | **"excel"** | **"docx"** | **"csv"** | **"txt"** | **"imSql"** | **“json”** )  |   | Required |
+| Type | must be valid Enum ("pdf" | "excel" | "docx" | "csv" | "txt" | "imSql" | “json” )  |   | Required |
 | response | Express.js's Response Object |   | Required |
 | AsOp | As Operation is an Array of Objects | \[\] |   |
 
