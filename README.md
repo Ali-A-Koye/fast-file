@@ -2,7 +2,7 @@
 
 #### _The Express.js's Fast File Converter Library_
 
-![download-image](https://animated-gif-creator.com/images/01/12-css-download-buttons_20.gif)
+![download-image](https://res.cloudinary.com/practicaldev/image/fetch/s--Lu-2u1-d--/c_imagga_scale,f_auto,fl_progressive,h_420,q_66,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/un5q91yc3m4mjidpl3sx.gif)
 
 [![Ali-A-Koye - fast-file ](https://img.shields.io/static/v1?label=Ali-A-Koye&message=fast-file&color=yellow&logo=github)](https://github.com/Ali-A-Koye/fast-file) [![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/Ali-A-Koye/fast-file/blob/master/LICENSE)
 
