@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 
-import fastFile from "../../dist/lib";
+import fastFile from "fast-file-converter";
 const app: Express = express();
 const port = 3000;
 
@@ -70,4 +70,4 @@ const server = app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
 
-export default server;
+export default server;export default server;
