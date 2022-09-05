@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 
-import fastFile from "../../dist/lib";
+import fastFile from "fast-file-converter";
 const app: Express = express();
 const port = 3000;
 
@@ -32,7 +32,6 @@ app.get("/excel", (req: Request, res: Response) => {
   fastFile(data, "excel", res);
 });
 
-
 app.get("/csv", (req: Request, res: Response) => {
   let data = [
     { name: "john", age: 12 },
@@ -40,7 +39,6 @@ app.get("/csv", (req: Request, res: Response) => {
   ];
   fastFile(data, "csv", res);
 });
-
 
 app.get("/txt", (req: Request, res: Response) => {
   let data = [
@@ -57,7 +55,6 @@ app.get("/imSql", (req: Request, res: Response) => {
   ];
   fastFile(data, "imSql", res);
 });
-
 
 app.get("/json", (req: Request, res: Response) => {
   let data = [
