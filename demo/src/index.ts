@@ -32,7 +32,6 @@ app.get("/excel", (req: Request, res: Response) => {
   fastFile(data, "excel", res);
 });
 
-
 app.get("/csv", (req: Request, res: Response) => {
   let data = [
     { name: "john", age: 12 },
@@ -40,7 +39,6 @@ app.get("/csv", (req: Request, res: Response) => {
   ];
   fastFile(data, "csv", res);
 });
-
 
 app.get("/txt", (req: Request, res: Response) => {
   let data = [
@@ -58,7 +56,6 @@ app.get("/imSql", (req: Request, res: Response) => {
   fastFile(data, "imSql", res);
 });
 
-
 app.get("/json", (req: Request, res: Response) => {
   let data = [
     { name: "john", age: 12 },
@@ -70,4 +67,4 @@ const server = app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
 
-export default server;export default server;
+export default server;
